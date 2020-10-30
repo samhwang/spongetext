@@ -5,6 +5,7 @@
  */
 function spongify(sentence: string): string {
   return sentence
+    .trim()
     .toLowerCase()
     .split('')
     .reduce((outputText, character): string => {
