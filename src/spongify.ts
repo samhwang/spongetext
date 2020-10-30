@@ -3,7 +3,7 @@
  * @param {string} sentence the input sentence
  * @returns {string} spongified sentence
  */
-function spongify(sentence: string): string {
+export default function spongify(sentence: string): string {
   return sentence
     .trim()
     .toLowerCase()
@@ -23,9 +23,7 @@ function spongify(sentence: string): string {
  * if character should be uppercase or not.
  * @returns {boolean}
  */
-function getRandomBoolean(): boolean {
+export function getRandomBoolean(): boolean {
   const randomBinaryNumber = Math.floor(Math.random() * Math.floor(2));
   return Boolean(randomBinaryNumber);
 }
-
-export default spongify;

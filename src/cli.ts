@@ -8,7 +8,7 @@ import spongify from './spongify';
  * @param {any[]} [argv] The rest of the command line arguments
  * @returns {Promise<void>}
  */
-async function spongeCLI(sentence?: string, ...argv: any[]): Promise<void> {
+export default async function spongeCLI(sentence?: string, ...argv: any[]): Promise<void> {
   let input = '';
 
   const noInitialParameter = !sentence;
@@ -36,7 +36,7 @@ async function spongeCLI(sentence?: string, ...argv: any[]): Promise<void> {
 /**
  * @interface IPromptObject The return object from enquirer prompt
  */
-interface IPromptObject {
+export interface IPromptObject {
   promptSentence: string;
 }
 
@@ -44,7 +44,7 @@ interface IPromptObject {
  * Get user input from command line
  * @returns {Promise<IPromptObject>}
  */
-async function getUserInput(): Promise<IPromptObject> {
+export async function getUserInput(): Promise<IPromptObject> {
   try {
     const response = await prompt<IPromptObject>({
       type: 'input',
@@ -57,5 +57,3 @@ async function getUserInput(): Promise<IPromptObject> {
     return { promptSentence: '' };
   }
 }
-
-export default spongeCLI;
