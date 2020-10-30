@@ -14,7 +14,11 @@ function spongeCLI(sentence?: string): void {
     throw new Error('Not enough arguments');
   }
 
-  const spongetext = spongify(sentence as string);
+  let spongetext = spongify(sentence as string);
+  const isSameAsSource = spongetext === sentence;
+  while (isSameAsSource) {
+    spongetext = spongify(sentence as string);
+  }
 
   console.log(spongetext);
 }
