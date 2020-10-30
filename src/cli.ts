@@ -1,3 +1,4 @@
+import { prompt } from 'enquirer';
 import spongify from './spongify';
 
 /**
@@ -5,22 +6,22 @@ import spongify from './spongify';
  * pass it to the spongify function
  * @param {string} [sentence] Sentence text input from commander
  * @param {any[]} [argv] The rest of the command line arguments
- * @returns {void}
+ * @returns {Promise<void>}
  */
-function spongeCLI(sentence?: string, ...argv: any[]): void {
-  const notEnoughParameters = !sentence;
-  if (notEnoughParameters) {
-    console.error('ERROR: There must be a text input');
-    console.warn('For more information, use --help tag');
-    throw new Error('Not enough arguments');
-  }
+async function spongeCLI(sentence?: string, ...argv: any[]): Promise<void> {
+  let input = '';
 
-  let input = sentence as string;
+  const noInitialParameter = !sentence;
+  if (noInitialParameter) {
+    input = (await getUserInput()).promptSentence;
+  } else {
+    input = sentence as string;
 
-  if (argv[1]) {
-    const extraArgs = argv[1] as string[];
-    const extras = extraArgs?.join(' ');
-    input = `${input} ${extras}`;
+    if (argv[1]) {
+      const extraArgs = argv[1] as string[];
+      const extras = extraArgs?.join(' ');
+      input = `${input} ${extras}`;
+    }
   }
 
   let spongetext = spongify(input);
@@ -30,6 +31,31 @@ function spongeCLI(sentence?: string, ...argv: any[]): void {
   }
 
   console.log(spongetext);
+}
+
+/**
+ * @interface IPromptObject The return object from enquirer prompt
+ */
+interface IPromptObject {
+  promptSentence: string;
+}
+
+/**
+ * Get user input from command line
+ * @returns {Promise<IPromptObject>}
+ */
+async function getUserInput(): Promise<IPromptObject> {
+  try {
+    const response = await prompt<IPromptObject>({
+      type: 'input',
+      name: 'promptSentence',
+      message: 'Type in a sentence to spongify:',
+    });
+    return response;
+  } catch (error) {
+    console.error(error);
+    return { promptSentence: '' };
+  }
 }
 
 export default spongeCLI;
