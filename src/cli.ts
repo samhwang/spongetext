@@ -36,7 +36,7 @@ export default async function spongeCLI(sentence?: string, ...argv: any[]): Prom
 /**
  * @interface IPromptObject The return object from enquirer prompt
  */
-export interface IPromptObject {
+interface IPromptObject {
   promptSentence: string;
 }
 
@@ -44,7 +44,7 @@ export interface IPromptObject {
  * Get user input from command line
  * @returns {Promise<IPromptObject>}
  */
-export async function getUserInput(): Promise<IPromptObject> {
+async function getUserInput(): Promise<IPromptObject> {
   try {
     const response = await prompt<IPromptObject>({
       type: 'input',
