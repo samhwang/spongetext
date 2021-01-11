@@ -9,19 +9,23 @@ import spongify from './spongify';
  * @returns {Promise<void>}
  */
 export default async function spongeCLI(sentence?: string, ...argv: any[]): Promise<void> {
-  let input = '';
+  let input = sentence as string;
+  if (argv[1]) {
+    const extraArgs = argv[1] as string[];
+    const extras = extraArgs?.join(' ');
+    input = `${input} ${extras}`;
+  }
 
-  const noInitialParameter = !sentence;
+  const noInitialParameter = !input;
   if (noInitialParameter) {
     input = (await getUserInput()).promptSentence;
-  } else {
-    input = sentence as string;
-
-    if (argv[1]) {
-      const extraArgs = argv[1] as string[];
-      const extras = extraArgs?.join(' ');
-      input = `${input} ${extras}`;
-    }
+  }
+  const isStillBlank = !input;
+  if (isStillBlank) {
+    // Exit early because it simply will just get stuck in a loop
+    // on an infinite loop
+    console.error('Cannot process blank input!');
+    throw new Error('Cannot process blank input!');
   }
 
   let spongetext = spongify(input);
