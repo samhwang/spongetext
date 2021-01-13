@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Convert a regular string into spongetext",
   "main": "build/index.js",
+  "bin": {
+    "sponge": "./build/index.js"
+  },
   "engines": {
     "node": "^14.0.0",
     "npm": "^6.0.0",
@@ -23,6 +26,7 @@
     "prebuild": "rimraf build",
     "build": "tsc",
     "build:watch": "tsc -w",
+    "pkg": "pkg .",
     "sponge": "node build/index.js",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "yarn lint --fix",
@@ -51,6 +55,7 @@
     "eslint-plugin-import": "^2.18.2",
     "faker": "^5.1.0",
     "jest": "^26.4.2",
+    "pkg": "^4.4.9",
     "prettier": "^2.1.2",
     "rimraf": "^3.0.2",
     "ts-node": "^8.10.2",
