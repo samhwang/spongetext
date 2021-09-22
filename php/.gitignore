@@ -1,0 +1,12 @@
+# OS specifics
+.DS_Store
+thumbs.db
+
+# Composer files
+vendor/
+
+# PHPUnit test result
+*phpunit*
+
+# Build results
+*.phar

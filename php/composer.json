@@ -1,0 +1,41 @@
+{
+    "name": "samhwang/spongetext",
+    "description": "Convert a regular string into spongetext",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Sam Huynh",
+            "email": "samhwang2112.dev@gmail.com"
+        }
+    ],
+    "bin": ["bin/spongetext.php"],
+    "require": {
+        "php": ">=8.0",
+        "symfony/console": "^5.2"
+    },
+    "require-dev": {
+        "clue/phar-composer": "^1.2",
+        "fakerphp/faker": "^1.13",
+        "phpunit/phpunit": "^9.5",
+        "squizlabs/php_codesniffer": "^3.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Spongetext\\": "src/Spongetext"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Spongetext\\": "tests/Spongetext"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "phpdbg -qrr ./vendor/bin/phpunit tests",
+        "format": "phpcbf src/* tests/* bin/*",
+        "lint": "phpcbf src/* tests/* bin/*",
+        "build": "php -d phar.readonly=Off ./vendor/bin/phar-composer build"
+    }
+}
