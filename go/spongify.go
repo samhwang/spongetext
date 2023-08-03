@@ -27,7 +27,7 @@ func spongify(input string) string {
 // get a random boolean, used to determine
 // if a character should be uppercase or not.
 func getRandomBoolean() bool {
-	rand.Seed(time.Now().UnixNano())
-	randomNumber := rand.Intn(2)
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	randomNumber := r.Intn(2)
 	return randomNumber != 0
 }

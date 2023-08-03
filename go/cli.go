@@ -16,7 +16,7 @@ func spongeCLI(c *cli.Context) error {
 	args := c.Args()
 
 	input := ""
-	noInitialParameters := args.Present() == false
+	noInitialParameters := !args.Present()
 	if noInitialParameters {
 		input = getUserInput()
 	} else {
