@@ -2,15 +2,14 @@
 
 ## Prerequisites
 
-- Node 12
-- NPM 6
-- Yarn 1
+- Node 20
+- PNPM 8
 
 ## Install and Build
 
 ```shell
-yarn install
-yarn build
+pnpm install
+pnpm build
 ```
 
 ## Run the script
@@ -18,8 +17,8 @@ yarn build
 Run one of these commands, they should evaluate to the same output.
 
 ```shell
-yarn sponge
-npm run sponge
+pnpm sponge
+pnpm run sponge
 node .
 node build/index.js
 ```

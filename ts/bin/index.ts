@@ -1,5 +1,5 @@
 import { program } from 'commander';
-import spongeCLI from './cli';
+import spongeCLI from '../src/cli';
 
 program
   .command('spongetext [sentence]')

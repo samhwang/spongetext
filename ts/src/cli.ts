@@ -4,11 +4,8 @@ import spongify from './spongify';
 /**
  * SpongeCLI, gets text input from the command line and
  * pass it to the spongify function
- * @param {string} [sentence] Sentence text input from commander
- * @param {any[]} [argv] The rest of the command line arguments
- * @returns {Promise<void>}
  */
-export default async function spongeCLI(sentence?: string, ...argv: any[]): Promise<void> {
+export default async function spongeCLI(sentence?: string, ...argv: unknown[]): Promise<void> {
   let input = sentence as string;
   if (argv[1]) {
     const extraArgs = argv[1] as string[];
@@ -46,7 +43,6 @@ interface IPromptObject {
 
 /**
  * Get user input from command line
- * @returns {Promise<IPromptObject>}
  */
 async function getUserInput(): Promise<IPromptObject> {
   try {
