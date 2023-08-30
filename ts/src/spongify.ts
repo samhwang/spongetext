@@ -8,9 +8,7 @@ export default function spongify(sentence: string): string {
     .split('')
     .reduce((outputText, character): string => {
       const randomBoolean = getRandomBoolean();
-      const spongeCharacter = randomBoolean
-        ? character.toUpperCase()
-        : character;
+      const spongeCharacter = randomBoolean ? character.toUpperCase() : character;
 
       return `${outputText}${spongeCharacter}`;
     }, '');
