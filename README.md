@@ -12,3 +12,4 @@ Implementations:
 - [TypeScript](https://github.com/samhwang/spongetext/tree/master/ts)
 - [Golang](https://github.com/samhwang/spongetext/tree/master/go)
 - [PHP](https://github.com/samhwang/spongetext/tree/master/php)
+- [Rust](https://github.com/samhwang/spongetext/tree/master/rust)
